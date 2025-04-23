@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1eadea, #202843, #2c5364);
+      background-size: 400% 400%;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      animation: fadeInBody 1.5s ease-in, gradientAnimation 15s ease infinite;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .cloud-icon {
+      position: absolute;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.2);
+      animation: cloudMove 40s linear infinite;
+      z-index: 0;
+    }
+    .cloud-icon:nth-child(2) {
+      top: 60%;
+      font-size: 8rem;
+      animation-duration: 50s;
+    }
+    @keyframes cloudMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(120vw); }
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background-color: white;
+      animation: glitter 3s infinite;
+      z-index: 0;
+      opacity: 0.8;
+      width: 1rem;
+      height: 1rem;
+      box-shadow: 0 0 5px white;
+    }
+    @keyframes glitter {
+      0% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.8); }
+    }
+
+    .star1 { top: 5%; left: 20%; }
+    .star2 { top: 15%; left: 60%; }
+    .star3 { top: 25%; left: 10%; }
+    .star4 { top: 30%; left: 80%; }
+    .star5 { top: 45%; left: 40%; }
+    .star6 { top: 60%; left: 70%; }
+    .star7 { top: 70%; left: 25%; }
+    .star8 { top: 80%; left: 50%; }
+    .star9 { top: 90%; left: 80%; }
+    .star10 { top: 40%; left: 90%; }
+
+    .tech-icon {
+      position: absolute;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.15);
+      z-index: 0;
+    }
+    .tech-icon:nth-child(6) { top: 25%; left: 10%; }
+    .tech-icon:nth-child(7) { top: 60%; left: 75%; }
+    .tech-icon:nth-child(8) { top: 75%; left: 50%; }
+
+    header {
+      padding: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 0 0 15px #95dbf5, 0 0 25px #FFD700;
+      animation: glitterHeader 3s ease-in-out infinite;
+      z-index: 1;
+      position: relative;
+    }
+    @keyframes glitterHeader {
+      0%, 100% { text-shadow: 0 0 10px #95dbf5, 0 0 20px #FFD700; }
+      50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #FFD700; }
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+      z-index: 1;
+      position: relative;
+    }
+    .profile img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 3px solid #FFD700;
+    }
+    .profile-name { font-size: 1.5em; margin-top: 5px; color: #FFD700; }
+
+    .about {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 1;
+      position: relative;
+    }
+    .about h2 { margin-bottom: 10px; color: #b0ed5a; }
+
+    .section { margin: 40px 0; animation: slideUp 1s ease-in-out; z-index: 1; position: relative; }
+    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .button {
+      background: linear-gradient(45deg, #1E90FF, #00BFFF);
+      color: white;
+      padding: 12px 24px;
+      margin: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .button:hover { transform: scale(1.05); background: linear-gradient(45deg, #00BFFF, #1E90FF); }
+    .button i { margin-right: 10px; }
+
+    .resume a {
+      background: linear-gradient(45deg, #32CD32, #00FF00);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: inline-block;
+    }
+    .resume a:hover {
+      background: linear-gradient(45deg, #00FF00, #32CD32);
+    }
+
+    .images {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (max-width: 600px) {
+      .star, .cloud-icon { font-size: 4rem; }
+      .profile img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Clouds and stars -->
+  <i class="fas fa-cloud cloud-icon"></i>
+  <i class="fas fa-cloud cloud-icon"></i>
+  <div class="star star1"></div>
+  <div class="star star2"></div>
+  <div class="star star3"></div>
+  <div class="star star4"></div>
+  <div class="star star5"></div>
+  <div class="star star6"></div>
+  <div class="star star7"></div>
+  <div class="star star8"></div>
+  <div class="star star9"></div>
+  <div class="star star10"></div>
+
+  <!-- Fixed Technical Icons -->
+  <i class="fas fa-desktop tech-icon"></i>
+  <i class="fas fa-server tech-icon"></i>
+  <i class="fas fa-network-wired tech-icon"></i>
+  <i class="fas fa-code tech-icon"></i>
+
+  <header>✨ Welcome to My Portfolio ✨</header>
+
+  <div class="profile">
+    <img src="deneth.jpg" alt="K. Deneth Kumar" />
+    <div class="profile-name">K.Deneth Kumar</div>
+  </div>
+
+  <div class="about">
+    <h2>About Me</h2>
+    <p>I’m an enthusiastic and creative engineering student passionate about web development and data science. I have done projects on online train ticket booking and plagiarism checker. I love building clean, user-friendly web applications and exploring the power of AI for real-world problems.</p>
+  </div>
+
+  <div class="section">
+    <button class="button" onclick="toggleImages('projects')"><i class="fas fa-folder-open"></i> Projects</button>
+    <div id="projects" class="images">
+      <img src="plag_checker.jpg" alt="Plagiarism Checker" />
+      <img src="train_ticket.png" alt="Train Ticket Booking" />
+    </div>
+  </div>
+
+  <div class="section">
+    <button class="button" onclick="toggleImages('elab')"><i class="fas fa-laptop-code"></i> Elab Status</button>
+    <div id="elab" class="images">
+      <img src="elab_status.png" alt="Elab Status" />
+    </div>
+  </div>
+
+  <div class="section">
+    <button class="button" onclick="toggleImages('labrecord')"><i class="fas fa-book"></i> Lab Record Index Page</button>
+    <div id="labrecord" class="images">
+      <img src="lab_record.jpg" alt="Lab Record Index Page" />
+    </div>
+  </div>
+
+  <div class="resume">
+    <h2>Download Resume</h2>
+    <p><a href="Deneth_resume.pdf" download>Click here to download my resume (PDF)</a></p>
+  </div>
+
+  <div class="section">
+    <button class="button" onclick="window.open('https://www.instagram.com/__deneth__kumar/?hl=en', '_blank')"><i class="fab fa-instagram"></i> Instagram</button>
+    <button class="button" onclick="window.open('https://www.linkedin.com/in/denethkumar-kuppam-61376a290/', '_blank')"><i class="fab fa-linkedin"></i> LinkedIn</button>
+    <button class="button" onclick="window.open('https://github.com/KuppamDenethkumar', '_blank')"><i class="fab fa-github"></i> GitHub</button>
+    <button class="button" onclick="window.location.href='mailto:denethkumark@gmail.com'"><i class="fas fa-envelope"></i> Email</button>
+  </div>
+
+  <div class="details">
+    <h2>My Details</h2>
+    <p><strong>Phone:</strong> 830******0</p>
+    <p><strong>Email:</strong> d******@gmail.com</p>
+    <p><strong>Location:</strong> Chennai</p>
+    <p><strong>Birthday:</strong> 29th September 2005</p>
+  </div>
+
+  <footer><p>Thanks for visiting my portfolio!</p></footer>
+
+  <script>
+    function toggleImages(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</body>
+</html>
